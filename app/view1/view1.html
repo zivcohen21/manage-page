@@ -1,0 +1,30 @@
+<table>
+    <tr>
+        <td></td>
+        <td>Name</td>
+        <td>Type</td>
+    </tr>
+
+    <tr ng-repeat="x in data" ng-mouseenter="options=true" ng-mouseleave="options=false">
+        <td><input type="checkbox" ng-model="appObj.cb"></td>
+        <td>
+            <div class="item-title">
+                {{ x.displayName }}
+            </div>
+            <div class="item-options">
+                <div ng-show="options">
+                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{x.apiName}}/edit">Edit</a>
+                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{x.apiName}}/clone">clone</a>
+                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{x.apiName}}/preview">preview</a>
+                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{x.apiName}}/analytics">analytics</a>
+                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{x.apiName}}/archive">archive</a>
+                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{x.apiName}}/publish">publish</a>
+                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{x.apiName}}/unpublish">unpublish</a>
+                </div>
+                <br ng-show="!options">
+            </div>
+
+        </td>
+        <td>{{ x.guide_type }}</td>
+    </tr>
+</table>
