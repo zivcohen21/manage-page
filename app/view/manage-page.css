@@ -1,18 +1,28 @@
+.container {
+    width: 80%;
+    margin: auto;
+}
+
 .search-form {
-    position: absolute;
-    right: 0;
+    margin: auto 0 auto auto;
 }
 
 .forms {
     display: inline-flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.left-forms {
+    display: inline-flex;
+
 }
 
 .action-form {
-    margin: 30px;
 }
 
 .filer-form {
-    margin: 30px 40px 30px 40px;
+    margin: 0 40px 0 40px;
 }
 
 table, th , td {
@@ -23,6 +33,7 @@ table, th , td {
 
 table tr:first-child{
     border-bottom: 1px solid grey;
+    font-weight: bold;
 }
 
 table tr:nth-child(even) {
@@ -34,6 +45,24 @@ table tr:nth-child(odd) {
 
 table {
     border: 1px solid grey;
-    width: 80%;
+    position: relative;
+    width: 100%;
+    color: #000068;
 }
 
+.message {
+    text-align: center;
+    color: #000068;
+    font-weight: bold;
+}
+
+.btn-submit {
+    height: 30px;
+    width: 60px;
+    font-size: 13px;
+}
+
+.input {
+    height: 30px;
+    width: 120px;
+}

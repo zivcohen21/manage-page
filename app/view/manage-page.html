@@ -1,56 +1,61 @@
-<form class="search-form">
-    <input type="text" class="input-search" placeholder="Search" ng-model="searchKeyword"/>
-    <button type="submit" class="submit-search" ng-click="search()">Search Pages</button>
-</form>
+<div class="container">
+    <div class="forms">
+        <div class="left-forms">
+            <form class="action-form">
+                <select title="" ng-model="selectedAction" class="input">
+                    <option value="">Bulk Actions</option>
+                    <option value="archive">Archive</option>
+                    <option value="publish">Publish</option>
+                    <option value="unpublish">Unpublish</option>
+                </select>
+                <button type="submit" class="btn-submit" ng-click="bulkActions()" ng-disabled="selectedAction === null">Apply</button>
+            </form>
 
-<div class="forms">
-    <form class="action-form">
-        <select title="" ng-model="selectedAction">
-            <option value="">Bulk Actions</option>
-            <option value="archive">Archive</option>
-            <option value="publish">Publish</option>
-            <option value="unpublish">Unpublish</option>
-        </select>
-        <button type="submit" class="submit-action" ng-click="bulkActions()" ng-disabled="selectedAction === null">Apply</button>
-    </form>
+            <form class="filer-form">
+                <select title="" ng-model="selectedType" ng-options="item for item in listOfTypes" class="input">
+                    <option value="">Select a type</option>
+                </select>
+                <button type="submit" class="btn-submit" ng-click="filter()">Filer</button>
+            </form>
+        </div>
+        <form class="search-form">
+            <input type="text" class="input" placeholder="Search" ng-model="searchKeyword" style="width: 250px; height: 25px;"/>
+            <button type="submit" class="btn-submit" ng-click="search()" style="width: 100px">Search Pages</button>
+        </form>
+    </div>
 
-    <form class="filer-form">
-        <select title="" ng-model="selectedType" ng-options="item for item in listOfTypes">
-            <option value="">Select a type</option>
-        </select>
-        <button type="submit" class="submit-filter" ng-click="filter()">Filer</button>
-    </form>
+
+
+    <table ng-show="data.length > 0">
+        <tr>
+            <td><input title="" type="checkbox" ng-click="changeAllSelections()" ng-model="allSelections"></td>
+            <td>Name</td>
+            <td>Type</td>
+        </tr>
+        <tr ng-repeat="item in data" ng-mouseenter="options=true" ng-mouseleave="options=false">
+            <td><input title="" type="checkbox" ng-click="toggleSelection()" ng-model="selectedItems[data.indexOf(item)]"></td>
+            <td>
+                <div class="item-title" style="font-weight: bold">
+                    {{ item.displayName || item.display_name}}
+                </div>
+                <div class="item-options">
+                    <div ng-show="options">
+                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/edit">Edit</a>
+                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/clone">Clone</a>
+                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/preview">Preview</a>
+                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/analytics">Analytics</a>
+                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/archive">Archive</a>
+                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/publish">Publish</a>
+                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/unpublish">Unpublish</a>
+                    </div>
+                    <br ng-show="!options">
+                </div>
+
+            </td>
+            <td>{{ item.guide_type }}</td>
+        </tr>
+    </table>
+
+    <p ng-show="data.length === 0" class="message">{{message}}</p>
 </div>
 
-
-<table ng-show="data.length > 0">
-    <tr>
-        <td><input title="" type="checkbox" ng-click="changeAllSelections()" ng-model="allSelections"></td>
-        <td>Name</td>
-        <td>Type</td>
-    </tr>
-    <tr ng-repeat="item in data" ng-mouseenter="options=true" ng-mouseleave="options=false">
-        <td><input title="" type="checkbox" ng-click="toggleSelection()" ng-model="selectedItems[data.indexOf(item)]"></td>
-        <td>
-            <div class="item-title">
-                {{ item.displayName || item.display_name}}
-            </div>
-            <div class="item-options">
-                <div ng-show="options">
-                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/edit">Edit</a>
-                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/clone">Clone</a>
-                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/preview">Preview</a>
-                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/analytics">Analytics</a>
-                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/archive">Archive</a>
-                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/publish">Publish</a>
-                    <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/unpublish">Unpublish</a>
-                </div>
-                <br ng-show="!options">
-            </div>
-
-        </td>
-        <td>{{ item.guide_type }}</td>
-    </tr>
-</table>
-
-<p ng-show="data.length === 0">{{message}}</p>
