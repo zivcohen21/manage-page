@@ -1,0 +1,39 @@
+.search-form {
+    position: absolute;
+    right: 0;
+}
+
+.forms {
+    display: inline-flex;
+}
+
+.action-form {
+    margin: 30px;
+}
+
+.filer-form {
+    margin: 30px 40px 30px 40px;
+}
+
+table, th , td {
+    border-collapse: collapse;
+    padding: 10px;
+    margin: auto;
+}
+
+table tr:first-child{
+    border-bottom: 1px solid grey;
+}
+
+table tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+table {
+    border: 1px solid grey;
+    width: 80%;
+}
+
