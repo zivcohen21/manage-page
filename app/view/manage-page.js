@@ -53,7 +53,7 @@ angular.module('myApp.manage-page', ['ngRoute'])
                     $scope.message = 'No Items';
                 }
 
-            }, function errorCallback(response) {
+            }, function errorCallback() {
                 $scope.data = [];
             });
     };
