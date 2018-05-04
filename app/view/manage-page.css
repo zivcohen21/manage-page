@@ -81,3 +81,10 @@ table {
     height: var(--forms-height);
     width: 120px;
 }
+
+.breadcrumb {
+    padding: 0 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color:transparent;
+}

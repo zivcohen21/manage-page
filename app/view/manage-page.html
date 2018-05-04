@@ -44,15 +44,15 @@
                     {{ item.displayName || item.display_name}}
                 </div>
                 <div class="item-options">
-                    <div ng-show="options">
-                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/edit">Edit</a>
-                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/clone">Clone</a>
-                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/preview">Preview</a>
-                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/analytics">Analytics</a>
-                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/archive">Archive</a>
-                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/publish">Publish</a>
-                        <a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/unpublish">Unpublish</a>
-                    </div>
+                    <ul ng-show="options" class="breadcrumb">
+                        <li><a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/edit">Edit</a></li>
+                        <li><a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/clone">Clone</a></li>
+                        <li><a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/preview">Preview</a></li>
+                        <li><a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/analytics">Analytics</a></li>
+                        <li><a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/archive">Archive</a></li>
+                        <li><a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/publish">Publish</a></li>
+                        <li><a href="https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/{{item.apiName}}/unpublish">Unpublish</a></li>
+                    </ul>
                     <br ng-show="!options">
                 </div>
 
