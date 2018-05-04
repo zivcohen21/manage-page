@@ -1,3 +1,7 @@
+:root {
+    --forms-height: 30px;
+    --margin-top: 20px;
+}
 .container {
     width: 80%;
     margin: auto;
@@ -5,12 +9,21 @@
 
 .search-form {
     margin: auto 0 auto auto;
+    display: inline-flex;
+}
+
+.pagination {
+    display: inline-flex;
+    /* padding-left: 0; */
+    /* margin: 20px 0; */
+    border-radius: 4px;
+    margin: auto 0 auto auto;
 }
 
 .forms {
     display: inline-flex;
     width: 100%;
-    margin-top: 20px;
+    margin-top: var(--margin-top);
 }
 
 .left-forms {
@@ -19,10 +32,12 @@
 }
 
 .action-form {
+    display: inline-flex;
 }
 
 .filer-form {
     margin: 0 40px 0 40px;
+    display: inline-flex;
 }
 
 table, th , td {
@@ -57,12 +72,12 @@ table {
 }
 
 .btn-submit {
-    height: 30px;
+    height: var(--forms-height);
     width: 60px;
     font-size: 13px;
 }
 
 .input {
-    height: 30px;
+    height: var(--forms-height);
     width: 120px;
 }

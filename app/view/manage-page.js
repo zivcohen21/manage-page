@@ -9,22 +9,38 @@ angular.module('myApp.manage-page', ['ngRoute'])
   });
 }])
 
-.controller('ManagePageCtrl', function($scope, $http) {
+.controller('ManagePageCtrl', function($scope, $http, $window) {
 
+    var topHeight = 100;
+    var itemHeight = 60;
+    $scope.itemsPerPage = Math.floor(($window.innerHeight - topHeight) / itemHeight) || 1;
+    $scope.totalItems = 0;
+    $scope.currentPage = 1;
+    $scope.maxSize = 3;
+
+    $scope.data = [];
     $scope.searchKeyword = '';
     $scope.listOfTypes = [];
     $scope.selectedType = null;
     $scope.selectedAction = null;
     $scope.selectedItems = [];
     $scope.allSelections = false;
+
+    console.log("$scope.itemsPerPage " + $scope.itemsPerPage + " $window.innerHeight " + $window.innerHeight);
+
     var authorization = {'Authorization': 'Basic ZWxld2luc286RXlhbDMwMDc='};
     var url = 'https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/';
 
-
+    $scope.pageChanged = function() {
+        var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
+        var end = begin + $scope.itemsPerPage;
+        $scope.filteredItems = $scope.data.slice(begin, end);
+        console.log("$scope.filteredItems " + $scope.filteredItems);
+    };
 
     $http.get(url, { headers: authorization })
         .then(function successCallback(response) {
-            console.log("successCallback:" + JSON.stringify(response));
+            //console.log("successCallback:" + JSON.stringify(response));
             $scope.allData = response.data;
 
             $scope.data = $scope.allData;
@@ -120,6 +136,15 @@ angular.module('myApp.manage-page', ['ngRoute'])
         angular.forEach($scope.data, function () {
             $scope.selectedItems.push(false);
         });
-    }
+        $scope.totalItems = $scope.data.length;
+        $scope.pageChanged();
+    };
+
+    $scope.numOfPages = function () {
+        return Math.ceil($scope.data.length / $scope.itemsPerPage);
+
+    };
+
+
 
 });
