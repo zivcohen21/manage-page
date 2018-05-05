@@ -23,7 +23,7 @@
             <input type="text" class="input" placeholder="Search" ng-model="searchKeyword" style="width: 250px;"/>
             <button type="submit" class="btn-submit" ng-click="search()" style="width: 100px">Search Pages</button>
         </form>
-        <ul uib-pagination boundary-links="true" force-ellipses="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+        <ul uib-pagination boundary-links="true" force-ellipses="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="itemsPerPage" max-size="maxSize" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
 
     </div>
 

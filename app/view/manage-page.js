@@ -17,7 +17,7 @@ angular.module('myApp.manage-page', ['ngRoute'])
     $scope.totalItems = 0;
     $scope.currentPage = 1;
     $scope.maxSize = 3;
-
+    $scope.numPages = Math.floor($scope.totalItems / $scope.itemsPerPage);
     $scope.data = [];
     $scope.searchKeyword = '';
     $scope.listOfTypes = [];
@@ -26,12 +26,11 @@ angular.module('myApp.manage-page', ['ngRoute'])
     $scope.selectedItems = [];
     $scope.allSelections = false;
 
-    console.log("$scope.itemsPerPage " + $scope.itemsPerPage + " $window.innerHeight " + $window.innerHeight);
-
     var authorization = {'Authorization': 'Basic ZWxld2luc286RXlhbDMwMDc='};
     var url = 'https://cs1.iridize.com/api/latest/app/8MXQlGj6R8Ogx2PohL9E+w/guide/';
 
     $scope.pageChanged = function() {
+
         var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
         var end = begin + $scope.itemsPerPage;
         $scope.filteredItems = $scope.data.slice(begin, end);
@@ -40,7 +39,6 @@ angular.module('myApp.manage-page', ['ngRoute'])
 
     $http.get(url, { headers: authorization })
         .then(function successCallback(response) {
-            //console.log("successCallback:" + JSON.stringify(response));
             $scope.allData = response.data;
 
             $scope.data = $scope.allData;
@@ -137,7 +135,9 @@ angular.module('myApp.manage-page', ['ngRoute'])
             $scope.selectedItems.push(false);
         });
         $scope.totalItems = $scope.data.length;
+        $scope.itemsPerPage = Math.floor(($window.innerHeight - topHeight) / itemHeight) || 1;
         $scope.currentPage = 1;
+        $scope.numPages = Math.ceil($scope.totalItems / $scope.itemsPerPage);
         $scope.pageChanged();
     };
 
