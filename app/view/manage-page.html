@@ -24,18 +24,14 @@
             <button type="submit" class="btn-submit" ng-click="search()" style="width: 100px">Search Pages</button>
         </form>
         <ul uib-pagination boundary-links="true" force-ellipses="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+
     </div>
-
-
-    <!--    <div data-pagination="" data-num-pages="numOfPages()"
-             data-current-page="curPage" data-max-size="maxSize"
-             data-boundary-links="true"></div>-->
 
     <table ng-show="data.length > 0">
         <tr>
-            <td><input title="" type="checkbox" ng-click="changeAllSelections()" ng-model="allSelections"></td>
-            <td>Name</td>
-            <td>Type</td>
+            <td style="width: 5%;"><input title="" type="checkbox" ng-click="changeAllSelections()" ng-model="allSelections"></td>
+            <td style="width: 85%;">Name</td>
+            <td style="width: 10%;">Type</td>
         </tr>
         <tr ng-repeat="item in filteredItems" ng-mouseenter="options=true" ng-mouseleave="options=false">
             <td><input title="" type="checkbox" ng-click="toggleSelection()" ng-model="selectedItems[data.indexOf(item)]"></td>

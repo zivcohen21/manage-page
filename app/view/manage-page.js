@@ -137,6 +137,7 @@ angular.module('myApp.manage-page', ['ngRoute'])
             $scope.selectedItems.push(false);
         });
         $scope.totalItems = $scope.data.length;
+        $scope.currentPage = 1;
         $scope.pageChanged();
     };
 
